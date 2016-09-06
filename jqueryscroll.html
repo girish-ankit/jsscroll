@@ -10,7 +10,7 @@
             
             $(document).ready(function(){
                 var contentHeight = $("#wrap").height(); // get page content height (wrap div height)        
-                var yOffset = $(window).scrollTop(); // get vertical scroll position (mouse position)
+                var yOffset = $(window).scrollTop(); // get vertical scroll position from top(mouse position)
                 var windowInnerHeight = $(window).height(); // get window display height
                 var y = yOffset + windowInnerHeight; // calculating bottom of the page
                  $('#status').html( contentHeight+" | "+y+" | "+windowInnerHeight+" | "+yOffset);
@@ -20,7 +20,7 @@
                 $(window).scroll(function(){
                                 
                         contentHeight = $("#wrap").height(); // get page content height (wrap div height)        
-                        yOffset = $(window).scrollTop(); // get vertical scroll position (mouse position)
+                        yOffset = $(window).scrollTop(); // get vertical scroll position from top(mouse position)
                         windowInnerHeight = $(window).height(); // get window display height
                         y = yOffset + windowInnerHeight; // calculating bottom of the page
                         
