@@ -8,7 +8,7 @@
                 var contentHeight = wrap.offsetHeight; // get page content height (wrap div height)
                 var yOffset = window.pageYOffset; // get vertical scroll position from top(mouse position)
                 var windowInnerHeight = window.innerHeight; // get window display height
-                var y = yOffset + windowInnerHeight; // calculating bottom of the page
+                var y = yOffset + windowInnerHeight; // calculating bottom of the page on scroll
                 status.innerHTML =  contentHeight+" | "+y+" | "+windowInnerHeight+" | "+yOffset;
                 
             }
@@ -19,7 +19,7 @@
                 var contentHeight = wrap.offsetHeight; // get page content height (wrap div height)
                 var yOffset = window.pageYOffset; // get vertical scroll position from top(mouse position)
                 var windowInnerHeight = window.innerHeight; // get window display height
-                var y = yOffset + windowInnerHeight; // calculating bottom of the page
+                var y = yOffset + windowInnerHeight; // calculating bottom of the page on scroll
                 
                 if(y >= contentHeight){
                     // call ajax or do whatever you want
