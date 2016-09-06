@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            var loading = true;
+            var cnt =0;
+            
+            
+            
+            $(document).ready(function(){
+                var contentHeight = $("#wrap").height(); // get page content height (wrap div height)        
+                var yOffset = $(window).scrollTop(); // get vertical scroll position (mouse position)
+                var windowInnerHeight = $(window).height(); // get window display height
+                var y = yOffset + windowInnerHeight; // calculating bottom of the page
+                 $('#status').html( contentHeight+" | "+y+" | "+windowInnerHeight+" | "+yOffset);
+                
+             
+                
+                $(window).scroll(function(){
+                                
+                        contentHeight = $("#wrap").height(); // get page content height (wrap div height)        
+                        yOffset = $(window).scrollTop(); // get vertical scroll position (mouse position)
+                        windowInnerHeight = $(window).height(); // get window display height
+                        y = yOffset + windowInnerHeight; // calculating bottom of the page
+                        
+                       $('#status').html( contentHeight+" | "+y+" | "+windowInnerHeight+" | "+yOffset);
+                       
+                       if((y >= contentHeight)){
+                           var counter = cnt +1;
+                           if((loading == false && cnt > 0)){
+                            loading = true;
+                            $("#wrap").append('<div class="loading">Loading ....<div>');
+                             yHandler(); 
+                             $(".scrolled span").text(counter);
+                           }
+                           
+                           if((loading == true && cnt == 0)){
+                            loading = true;
+                            $("#wrap").append('<div class="loading">Loading ....<div>');
+                             yHandler(); 
+                             
+                              $(".scrolled span").text(counter);
+                           }
+                           // when you start loading,set loading
+                           
+                       }
+                });
+                
+                
+                
+                function yHandler(){
+                   
+                    // Ajax call
+                     $("#wrap").append('<div class="new-data"><div>');
+                     
+                     // once we have loaded kill the loader
+                     loading = false;
+                     $('.loading').remove();
+                     cnt++;
+                    
+                }
+                
+              });
+              
+             
+                
+              
+         
+            
+           
+        </script>
+        
+        <style type="text/css">
+            div#status{position:fixed; font-size:24px; float:left;}
+            div.scrolled{position:fixed; font-size:24px; right:0px;}
+            div#wrap{width:800px; margin:0px auto;}
+            div.new-data{height:500px; background: #FF0000; margin-bottom:10px;}
+        </style>
+    </head>
+
+    <body>
+        <div id="status">0 | 0 | 0 | 0</div><div class="scrolled"><span>0</span> scroll.</div>
+   
+        <div id="wrap" ><img src="images/vertical-image.jpg"></div>
+    </body>
+</html>

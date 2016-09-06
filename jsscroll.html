@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            function defaultData(){
+                var status = document.getElementById('status');
+                var contentHeight = wrap.offsetHeight; // get page content height (wrap div height)
+                var yOffset = window.pageYOffset; // get vertical scroll position (mouse position)
+                var windowInnerHeight = window.innerHeight; // get window display height
+                var y = yOffset + windowInnerHeight; // calculating bottom of the page
+                status.innerHTML =  contentHeight+" | "+y+" | "+windowInnerHeight+" | "+yOffset;
+                
+            }
+            
+            function yHandler(){
+                var wrap = document.getElementById('wrap');
+                var status = document.getElementById('status');
+                var contentHeight = wrap.offsetHeight; // get page content height (wrap div height)
+                var yOffset = window.pageYOffset; // get vertical scroll position (mouse position)
+                var windowInnerHeight = window.innerHeight; // get window display height
+                var y = yOffset + windowInnerHeight; // calculating bottom of the page
+                
+                if(y >= contentHeight){
+                    // call ajax or do whatever you want
+                    wrap.innerHTML += '<div class="new-data"><div>'
+                }
+                
+                status.innerHTML =  contentHeight+" | "+y+" | "+windowInnerHeight+" | "+yOffset;
+            }
+            
+            window.onscroll = yHandler;
+            
+            window.onload = defaultData;
+        </script>
+        
+        <style type="text/css">
+            div#status{position:fixed; font-size:24px;}
+            div#wrap{width:800px; margin:0px auto;}
+            div.new-data{height:500px; background: #FF0000; margin-bottom:10px;}
+        </style>
+    </head>
+
+    <body>
+        <div id="status">0 | 0 | 0 | 0</div>
+        <div id="wrap"><img src="images/vertical-image.jpg"></div>
+    </body>
+</html>
